@@ -10,7 +10,7 @@ use Mix.Config
 # Configures the endpoint
 config :live_view_counter, LiveViewCounterWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "eWuxSeOvLmwHmKrqMMzOXCKoKMJX96ewU2jI9+lwCloONSovo2xyGvP2/Uw2OO54",
+  secret_key_base: "a3QampcbLsOzOj2peWHEM57i3LHTZFm2oZmFRDZX5Cop2+s4kfx/vrWLGLJS+eD9",
   render_errors: [view: LiveViewCounterWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: LiveViewCounter.PubSub, adapter: Phoenix.PubSub.PG2]
 
@@ -21,6 +21,14 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :phoenix,
+       template_engines: [leex: Phoenix.LiveView.Engine]
+
+config :live_view_counter, LiveViewCounterWeb.Endpoint,
+       live_view: [
+         signing_salt: "7HekGYwxATz33gM/rH9q2mV+uKJq5/Hu" # TODO: putting this here would be a bad idea in a real project
+       ]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

@@ -5,6 +5,8 @@ defmodule LiveViewCounterWeb.Endpoint do
     websocket: true,
     longpoll: false
 
+  socket "/live", Phoenix.LiveView.Socket
+
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phx.digest
@@ -40,7 +42,7 @@ defmodule LiveViewCounterWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_live_view_counter_key",
-    signing_salt: "TiRwP/EB"
+    signing_salt: "NixwlUHL"
 
   plug LiveViewCounterWeb.Router
 end
